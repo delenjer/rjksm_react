@@ -1,15 +1,17 @@
 import React from 'react';
 
-export const ArtCollectionsList = (props: object) => {
-  const { artCollections }: any = props;
+import { ArtCollectionItem } from '../ArtCollectionItem/ArtCollectionItem';
+
+export const ArtCollectionsList = (props: IState) => {
+  const { artCollections } = props;
 
   return (
     <section className="collection">
       <div className="collection__list">
         {
-          artCollections.artObjects !== undefined && artCollections.artObjects.map((art: IArt) => {
-            console.log(art.id);
-          })
+          artCollections.artObjects && artCollections.artObjects.map((art) => (
+            <ArtCollectionItem key={art.id} art={art} />
+          ))
         }
       </div>
     </section>
